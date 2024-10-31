@@ -1,12 +1,8 @@
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
 
 public class StudentRegistrationForm {
     public static void main(String[] args) {
@@ -17,22 +13,39 @@ public class StudentRegistrationForm {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         frame.add(panel);
+
+        JScrollPane scrollPane = new JScrollPane(panel);
+        frame.add(scrollPane);
                          
+        //Adds padding/border on the panel
+        panel.setBorder(new EmptyBorder(50, 50, 50, 50));
+
         // Name Fields
-        panel.add(new JLabel("Name"));
-        JTextField firstName = new JTextField(20);
-        JTextField secondName = new JTextField(20);
-        JTextField lastName = new JTextField(20);
-        panel.add(new JLabel("First Name:"));
-        panel.add(firstName);
-        panel.add(new JLabel("Second Name:"));
-        panel.add(secondName);
-        panel.add(new JLabel("Last Name:"));
-        panel.add(lastName);
+        JPanel row1 = new JPanel(new GridLayout(1,3));
+        row1.add(new Checkbox("Mr."));
+        row1.add(new JLabel("Last:"));
+        row1.add(new JLabel("First"));
+        row1.add(new JLabel("Middle"));
+
+        JPanel row2 = new JPanel(new GridLayout(1,3));
+        row2.add(new Checkbox("Mrs."));
+        row2.add(new JTextField());
+        row2.add(new JTextField());
+        row2.add(new JTextField());
+
+        JPanel row3 = new JPanel(new GridLayout(1,3));
+        row3.add(new Checkbox("Ms."));
+        row3.add(new JTextField());
+        row3.add(new JTextField());
+        row3.add(new JTextField());
+
+        panel.add(row1);
+        panel.add(row2);
+        panel.add(row3);
 
         // Address Fields
         panel.add(new JLabel("Address"));
-        JTextField streetAddress = new JTextField(20);
+        JTextField streetAddress = new JTextField(10);
         JTextField city = new JTextField(20);
         JTextField postal = new JTextField(10);
         JTextField cellPhone = new JTextField(15);
